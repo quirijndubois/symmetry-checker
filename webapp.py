@@ -19,9 +19,7 @@ def dx_to_latex(latex):
 
 n = 5
 
-col1,col2 = st.columns((3,1))
-col1.title("Symmetry checker")
-col2.page_link("https://quirijndubois.nl",label="Made by Quirijn",icon="🤓")
+st.title("Symmetry checker")
 
 invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
 
@@ -113,4 +111,7 @@ cols[1].latex(t_transform)
 
 st.divider()
 
-st.link_button("Report a bug","https://github.com/quirijndubois/symmetry-checker/issues/new")
+
+col1,col2 = st.columns((3,1))
+col1.link_button("Report a bug","https://github.com/quirijndubois/symmetry-checker/issues/new")
+col2.page_link("https://quirijndubois.nl",label="Made by Quirijn",icon="🤓")
