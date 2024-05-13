@@ -10,7 +10,7 @@ Update with:
 ```bash
 git pull https://github.com/quirijndubois/symmetry-checker && docker build -t symmetry-checker . && docker container rm symmetry-checker-container && docker run -d -p 8901:8901 --name symmetry-checker-container symmetry-checker
 ```
-Alternatively:
+Alternatively with sudo:
 ```bash
-git pull https://github.com/quirijndubois/symmetry-checker && sudo docker build -t symmetry-checker . && sudo docker container rm symmetry-checker-container && sudo docker run -d -p 8901:8901 --name symmetry-checker-container symmetry-checker
+sudo git pull https://github.com/quirijndubois/symmetry-checker && sudo docker build -t symmetry-checker . && sudo docker container rm symmetry-checker-container && sudo docker run -d -p 8901:8901 --name symmetry-checker-container symmetry-checker
 ```
