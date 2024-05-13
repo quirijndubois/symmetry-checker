@@ -21,7 +21,7 @@ n = 5
 
 st.title("Symmetry checker")
 
-invoer = st.text_input("Input equation of motion:")
+invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
 
 invoer = str(invoer).split("=")
 
@@ -48,7 +48,6 @@ st.divider()
 # time symmetry:
 t_sym, t_transform = check_t_symmetry(expr)
 
-print(t_transform)
 
 cols = st.columns(2)
 if t_sym:
@@ -65,7 +64,6 @@ st.divider()
 # time translation symmetry:
 t_sym, t_transform = check_t_translation(expr)
 
-print(t_transform)
 
 cols = st.columns(2)
 if t_sym:

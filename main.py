@@ -13,9 +13,15 @@ def check_t_symmetry(expr):
         for i in range(10):
             sign = (-1)**i
             new_expr = new_expr.replace(
-                smp.Subs(smp.Derivative(func, t, i), t, -t), sign*smp.Derivative(func, t, i))
+                smp.Subs(smp.Derivative(func, t, i), t, -t),
+                sign*smp.Derivative(func.subs(t,-t), t, i)
+                )
 
-        # new_expr = new_expr.replace(smp.Subs(func, t, -t).doit(), func)
+    for func in expr.atoms(smp.Function):
+        new_expr = new_expr.replace(
+            func.subs(t,-t),
+            func
+            )
 
     if expr.equals(new_expr):
         return True, new_expr
@@ -36,7 +42,13 @@ def check_t_translation(expr):
         for i in range(10):
             new_expr = new_expr.replace(
                 smp.Subs(smp.Derivative(func, t, i), t, dt + t),
-                smp.Derivative(func, t, i) + smp.Derivative(dt, t, i).doit()
+                smp.Derivative(func.subs(t,t+dt),t,i)
+            )
+
+    for func in expr.atoms(smp.Function):
+        new_expr = new_expr.replace(
+            func.subs(t,dt+t),
+            func
             )
 
     if expr.equals(new_expr):
