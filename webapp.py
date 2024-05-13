@@ -19,11 +19,9 @@ def dx_to_latex(latex):
 
 n = 5
 
-st.title("Symmetry checker")
+st.title("Symmetry checker (:")
 
 invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
-
-st.write("Use $t$ and $x(t)$ for time and position respectively")
 
 invoer = str(invoer).split("=")
 
@@ -37,7 +35,7 @@ else:
 expr = left - right
 expr = expr.simplify().doit()
 
-st.subheader("Parsed expression: ")
+st.write("Parsed expression: ")
 
 expr_latex = smp.latex(expr)
 
@@ -72,38 +70,6 @@ if t_sym:
     cols[0].subheader("Time translation symmetry confirmed ✅")
 else:
     cols[0].subheader("Time translation symmetry not found ❌")
-
-cols[1].write("Transformed form:")
-t_transform = dx_to_latex(smp.latex(t_transform))+"=0"
-cols[1].latex(t_transform)
-
-st.divider()
-
-# position translation symmetry:
-t_sym, t_transform = check_x_translation(expr)
-
-
-cols = st.columns(2)
-if t_sym:
-    cols[0].subheader("Position translation symmetry confirmed ✅")
-else:
-    cols[0].subheader("Position translation symmetry not found ❌")
-
-cols[1].write("Transformed form:")
-t_transform = dx_to_latex(smp.latex(t_transform))+"=0"
-cols[1].latex(t_transform)
-
-st.divider()
-
-# parity symmetry:
-t_sym, t_transform = check_parity(expr)
-
-
-cols = st.columns(2)
-if t_sym:
-    cols[0].subheader("Parity symmetry confirmed ✅")
-else:
-    cols[0].subheader("Parity symmetry not found ❌")
 
 cols[1].write("Transformed form:")
 t_transform = dx_to_latex(smp.latex(t_transform))+"=0"
