@@ -55,3 +55,29 @@ def check_t_translation(expr):
         return True, new_expr
     else:
         return False, new_expr
+    
+def check_x_translation(expr):
+    dx = smp.Symbol("\Delta x")
+
+    x = smp.Function("x")
+    t = smp.Symbol("t")
+
+    new_expr = smp.Subs(expr, x(t), x(t)+dx).doit()
+
+    if expr.equals(new_expr):
+        return True, new_expr
+    else:
+        return False, new_expr
+
+def check_parity(expr):
+    dx = smp.Symbol("\Delta x")
+
+    x = smp.Function("x")
+    t = smp.Symbol("t")
+
+    new_expr = smp.Subs(expr, x(t), -x(t)).doit()
+
+    if expr.equals(new_expr):
+        return True, new_expr
+    else:
+        return False, new_expr
