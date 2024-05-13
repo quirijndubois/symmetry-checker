@@ -23,7 +23,7 @@ st.title("Symmetry checker")
 
 invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
 
-st.write("Use $t$ and $x(t)$ for time and position respectively")
+st.write("Use $t$ and $x(t)$ for time and position respectively. Also don't trust the results blindly😅")
 
 invoer = str(invoer).split("=")
 
@@ -104,6 +104,22 @@ if t_sym:
     cols[0].subheader("Parity symmetry confirmed ✅")
 else:
     cols[0].subheader("Parity symmetry not found ❌")
+
+cols[1].write("Transformed form:")
+t_transform = dx_to_latex(smp.latex(t_transform))+"=0"
+cols[1].latex(t_transform)
+
+st.divider()
+
+# Boost symmetry:
+t_sym, t_transform = check_boost(expr)
+
+
+cols = st.columns(2)
+if t_sym:
+    cols[0].subheader("Boost symmetry confirmed ✅")
+else:
+    cols[0].subheader("Boost symmetry not found ❌")
 
 cols[1].write("Transformed form:")
 t_transform = dx_to_latex(smp.latex(t_transform))+"=0"

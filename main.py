@@ -81,3 +81,17 @@ def check_parity(expr):
         return True, new_expr
     else:
         return False, new_expr
+    
+def check_boost(expr):
+    dx = smp.Symbol("\Delta x")
+
+    x = smp.Function("x")
+    t = smp.Symbol("t")
+    v = smp.Symbol("v")
+
+    new_expr = smp.Subs(expr, x(t), x(t)+v*t).doit()
+
+    if expr.equals(new_expr):
+        return True, new_expr
+    else:
+        return False, new_expr
