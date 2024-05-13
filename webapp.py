@@ -19,7 +19,7 @@ def dx_to_latex(latex):
 
 n = 5
 
-st.title("EOM Symmetry checker")
+st.title("Symmetry checker (:")
 
 invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
 
