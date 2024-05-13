@@ -1,3 +1,5 @@
+https://symmetry.quirijndubois.nl
+
 First build the docker container
 ```bash
 docker build -t symmetry-checker .
