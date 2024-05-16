@@ -131,6 +131,6 @@ st.divider()
 
 
 col1,col2,col3 = st.columns(3)
-col1.page_link("https://github.com/quirijndubois/symmetry-checker/issues/new",label="         Report a bug")
-col2.page_link("https://github.com/quirijndubois/symmetry-checker",label="           Open source")
+col1.page_link("https://github.com/quirijndubois/symmetry-checker/issues/new",label="              Report a bug")
+col2.page_link("https://github.com/quirijndubois/symmetry-checker",label="              Code")
 col3.page_link("https://quirijndubois.nl",label="              Made by Quirijn")
