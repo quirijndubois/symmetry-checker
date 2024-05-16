@@ -19,11 +19,13 @@ def dx_to_latex(latex):
 
 n = 5
 
+st.set_page_config(layout="wide")
+
 st.title("Symmetry checker")
 
 invoer = st.text_input("Input equation of motion:",value="diff(x(t),t,2)=-x(t)")
 
-st.write("Use $t$ and $x(t)$ for time and position respectively. Also don't trust the results blindly😅")
+st.write("Use $t$ and $x(t)$ for time and position respectively. Right now all variable are considered to be 1-dimensional.  Also don't trust the results blindly😅")
 
 invoer = str(invoer).split("=")
 
