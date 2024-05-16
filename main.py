@@ -23,7 +23,7 @@ def check_t_symmetry(expr):
             func
             )
 
-    if expr.equals(new_expr):
+    if expr.equals(new_expr) or smp.Subs(new_expr,expr,0).equals(0):
         return True, new_expr
     else:
         return False, new_expr
@@ -51,7 +51,7 @@ def check_t_translation(expr):
             func
             )
 
-    if expr.equals(new_expr):
+    if expr.equals(new_expr) or smp.Subs(new_expr,expr,0).equals(0):
         return True, new_expr
     else:
         return False, new_expr
@@ -64,7 +64,7 @@ def check_x_translation(expr):
 
     new_expr = smp.Subs(expr, x(t), x(t)+dx).doit()
 
-    if expr.equals(new_expr):
+    if expr.equals(new_expr) or smp.Subs(new_expr,expr,0).equals(0):
         return True, new_expr
     else:
         return False, new_expr
@@ -77,7 +77,7 @@ def check_parity(expr):
 
     new_expr = smp.Subs(expr, x(t), -x(t)).doit()
 
-    if expr.equals(new_expr):
+    if expr.equals(new_expr) or smp.Subs(new_expr,expr,0).equals(0):
         return True, new_expr
     else:
         return False, new_expr
@@ -91,7 +91,7 @@ def check_boost(expr):
 
     new_expr = smp.Subs(expr, x(t), x(t)+v*t).doit()
 
-    if expr.equals(new_expr):
+    if expr.equals(new_expr) or smp.Subs(new_expr,expr,0).equals(0):
         return True, new_expr
     else:
         return False, new_expr
